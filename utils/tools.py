@@ -27,17 +27,17 @@ def tps_warp(Y, Z, IY, out_shape):
     return out_image
 
 
-def checkerboard(I1, I2, n=12):
+def checkerboard(I1, I2, num_tiles):
     assert I1.shape == I2.shape
     height, width, channels = I1.shape
-    hi, wi = height // n, width // n
-    outshape = (hi * n, wi * n, channels)
+    hi, wi = height // num_tiles, width // num_tiles
+    outshape = (hi * num_tiles, wi * num_tiles, channels)
 
     out_image = np.zeros(outshape, dtype='uint8')
-    for i in range(n):
+    for i in range(num_tiles):
         h = hi * i
         h1 = h + hi
-        for j in range(n):
+        for j in range(num_tiles):
             w = wi * j
             w1 = w + wi
             if (i - j) % 2 == 0:

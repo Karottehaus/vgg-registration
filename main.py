@@ -2,6 +2,7 @@ from src.registration import ImageRegistration
 import matplotlib.pyplot as plt
 from utils.tools import tps_warp, checkerboard
 import cv2
+from settings import NUM_TILES
 
 IX_path = 'img/1a.jpg'
 IY_path = 'img/1b.jpg'
@@ -12,7 +13,7 @@ image_registration = ImageRegistration()
 X, Y, Z = image_registration.register(IX, IY)
 
 registered = tps_warp(Y, Z, IY, IX.shape)
-checkerboard_image = checkerboard(IX, registered, 12)
+checkerboard_image = checkerboard(IX, registered, num_tiles=NUM_TILES)
 
 plt.subplot(141)
 plt.title('Reference')
